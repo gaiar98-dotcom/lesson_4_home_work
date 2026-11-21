@@ -1,0 +1,19 @@
+[project]
+name = "lesson-4-home-work"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Gaia Ravid", email = "gaiar98@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "pyside6>=6.12.0",
+]
+
+[project.scripts]
+lesson-4-home-work = "lesson_4_home_work:main"
+
+[build-system]
+requires = ["uv_build>=0.13.6,<0.14.0"]
+build-backend = "uv_build"
