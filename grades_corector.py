@@ -123,8 +123,20 @@ class GradesCorrectorWindow(QMainWindow):
         self.update_table() 
 
     def apply_bonus(self):
-        # TODO (שלב 4): כאן תכתבי את הקוד שמחשב את הציונים המתוקנים ומעדכן את הטבלה
-        pass
+        text = self.bonus_input.text()
+        if not text:
+            return
+
+        bonus = int(text)
+
+        for i in range(len(self.original_grades)):
+            new_grade = self.original_grades[i] + bonus
+            if new_grade > 100:
+                new_grade = 100
+            self.corrected_grades[i] = new_grade
+
+        self.update_table()
+    
 
     def update_file(self):
         # TODO (שלב 5): כאן תכתבי את הקוד שדורס את הקובץ המקורי ופותח אותו באקסל
