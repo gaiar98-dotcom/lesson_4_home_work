@@ -102,7 +102,25 @@ class GradesCorrectorWindow(QMainWindow):
         if not file_path:
             return
 
-        # TODO (שלב 3): כאן תכתבי את הקוד שטוען את הקובץ לרשימות ומעדכן את הטבלה
+        self.selected_file = file_path
+
+        self.student_ids = []
+        self.original_grades = []
+        self.corrected_grades = []
+
+        with open(self.selected_file, "r") as f:
+            lines = f.readlines()
+
+        for line in lines[1:]:
+            parts = line.strip().split(",")
+            student_id = parts[0]
+            grade = float(parts[1])
+
+            self.student_ids.append(student_id)
+            self.original_grades.append(grade)
+            self.corrected_grades.append(grade)
+
+        self.update_table() 
 
     def apply_bonus(self):
         # TODO (שלב 4): כאן תכתבי את הקוד שמחשב את הציונים המתוקנים ומעדכן את הטבלה

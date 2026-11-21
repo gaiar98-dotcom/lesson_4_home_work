@@ -53,6 +53,7 @@ QPushButton#aboutBtn:hover {
 
 QTableWidget {
     background-color: #ffffff;
+    color: #1e293b;
     border: 1px solid #cbd5e1;
     border-radius: 6px;
     gridline-color: #e2e8f0;
