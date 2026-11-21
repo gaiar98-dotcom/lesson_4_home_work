@@ -24,7 +24,11 @@ class GradesCorrectorWindow(QMainWindow):
         self.setWindowTitle("Grades Corrector")
         self.resize(700, 600)
 
-        # TODO (שלב 2): כאן תוסיפי את 4 המשתנים של החלון
+        
+        self.student_ids = []
+        self.original_grades = []
+        self.corrected_grades = []
+        self.file_path = ""
 
         self.setup_ui()
         self.load_stylesheet()
