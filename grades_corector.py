@@ -1,5 +1,6 @@
 import os
 import sys
+import subprocess
 from PySide6.QtWidgets import (
     QApplication,
     QMainWindow,
@@ -139,8 +140,23 @@ class GradesCorrectorWindow(QMainWindow):
     
 
     def update_file(self):
-        # TODO (שלב 5): כאן תכתבי את הקוד שדורס את הקובץ המקורי ופותח אותו באקסל
-        pass
+        if not self.selected_file:
+            return
+
+       
+        with open(self.selected_file, "w") as f:
+            f.write("ID,Grade\n")
+            for i in range(len(self.student_ids)):
+                f.write(f"{self.student_ids[i]},{self.corrected_grades[i]}\n")
+
+       
+        if sys.platform == "win32":
+            os.startfile(self.selected_file)
+        elif sys.platform == "darwin":
+            subprocess.call(["open", self.selected_file])
+        else:
+            subprocess.call(["xdg-open", self.selected_file])
+        
 
     def show_about(self):
         QMessageBox.about(
